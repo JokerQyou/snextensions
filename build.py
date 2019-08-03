@@ -58,9 +58,7 @@ def main(base_url):
         )
 
         # Strip empty values
-        for k, v in extension.items():
-            if not v:
-                extension.pop(k, v)
+        extension = {k: v for k, v in extension.items() if v}
 
         # npm install --save
         run(['npm', 'install', '--save', '{npm}@{version}'.format(**ext)])
