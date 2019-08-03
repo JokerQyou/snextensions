@@ -48,13 +48,19 @@ def main(base_url):
             area=ext['area'],
             version=ext['version'],
             description=ext['description'],
-            marketing_url=ext['marketing_url'],
-            thumbnail_url=ext.get('thumbnail_url', ''),
+            marketing_url=ext.get('marketing_url', None),
+            thumbnail_url=ext.get('thumbnail_url', None),
             valid_until='2030-05-16T18:35:33.000Z',
             url=extension_url,
             download_url='https://github.com/{github}/archive/{version}.zip'.format(**ext),
             latest_url=extension_info_url,
+            flags=ext.get('flags', []),
         )
+
+        # Strip empty values
+        for k, v in extension.items():
+            if not v:
+                extension.pop(k, v)
 
         # npm install --save
         run(['npm', 'install', '--save', '{npm}@{version}'.format(**ext)])
