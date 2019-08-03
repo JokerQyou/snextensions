@@ -2,6 +2,7 @@
 echo "Fetching extensions..."
 python build.py
 echo "Clean up..."
+cd public
 find -type f \
     \( -name README.md \
        -o -name .babelrc \
