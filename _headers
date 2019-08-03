@@ -2,3 +2,4 @@
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
   Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: content-type
