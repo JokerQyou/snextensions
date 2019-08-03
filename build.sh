@@ -13,5 +13,5 @@ find -maxdepth 2 -type d -name src | xargs rm -rf
 find -maxdepth 2 -type d -name vendor | xargs rm -rf
 echo "Clean up finished."
 echo "Post building..."
-cp _headers public/
+cp ../_headers ./
 echo "Build finished."
