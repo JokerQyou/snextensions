@@ -9,6 +9,6 @@ find -type f \
        -o -name Gruntfile.js \
        -o -name package.json \
        -o -name "*.map" \) | xargs rm
-find -maxdepth 2 -type d -name src | xargs rm
-find -maxdepth 2 -type d -name vendor | xargs rm
+find -maxdepth 2 -type d -name src | xargs rm -rf
+find -maxdepth 2 -type d -name vendor | xargs rm -rf
 echo "Clean up finished."
