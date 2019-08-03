@@ -1,6 +1,6 @@
 id = "org.standardnotes.standard-sheets"
 npm = "sn-spreadsheets"
-github = "sn-extensions/"
+github = "sn-extensions/secure-spreadsheets"
 main = "dist/index.html"
 
 name = "Secure Spreadsheets"
