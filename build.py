@@ -55,7 +55,7 @@ def main(base_url):
             download_url='https://github.com/{github}/archive/{version}.zip'.format(**ext),
             latest_url=extension_info_url,
             flags=ext.get('flags', []),
-            dock_icon=exte.get('dock_icon', {}),
+            dock_icon=ext.get('dock_icon', {}),
             layerable=ext.get('layerable', None),
         )
 
