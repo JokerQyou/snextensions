@@ -25,6 +25,8 @@ def main(base_url):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     extension_dir = os.path.join(base_dir, 'extensions')
     public_dir = os.path.join(base_dir, 'public')
+    os.makedirs(public_dir)
+    os.chdir(public_dir)
 
     extensions = []
 
@@ -62,8 +64,15 @@ def main(base_url):
         # Strip empty values
         extension = {k: v for k, v in extension.items() if v}
 
-        # npm install --save
-        run(['npm', 'install', '--save', '{npm}@{version}'.format(**ext)])
+        # That is very strange, StandardNotes does not upload some npm packages
+        # when extensions get updated. We'll have to handle them by git.
+        # git clone --branch {version} --depth 1 {github_url}
+        run(['git', 'clone', '--branch', ext['version'], '--depth', '1', 'https://github.com/{github}.git'.format(**ext)])
+        dotgit_dir = os.path.join(
+            ext['github'].split('/')[-1],
+            '.git',
+        )
+        shutil.rmtree(dotgit_dir)
 
         # Generate JSON file for each extension
         with open(os.path.join(base_dir, 'node_modules', ext['npm'], 'index.json'), 'w') as wf:
@@ -72,11 +81,7 @@ def main(base_url):
         extensions.append(extension)
         print('Loaded extension: {}'.format(ext['name']))
 
-    # `node_modules` will be our `public`
-    shutil.move(
-        os.path.join(base_dir, 'node_modules'),
-        os.path.join(base_dir, 'public'),
-    )
+    os.chdir('..')
 
     # Generate the index JSON file
     with open(os.path.join(base_dir, 'public', 'index.json'), 'w') as wf:
