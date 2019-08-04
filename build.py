@@ -39,10 +39,11 @@ def main(base_url):
             ext = toml.load(rf)
 
         # Build extension info
+        repo_name = ext['github'].split('/')[-1]
         # https://example.com/my-extension/index.html
-        extension_url = '/'.join([base_url, ext['npm'], ext['main']])
+        extension_url = '/'.join([base_url, repo_name, ext['main']])
         # https://example.com/my-extension/index.json
-        extension_info_url = '/'.join([base_url, ext['npm'], 'index.json'])
+        extension_info_url = '/'.join([base_url, repo_name, 'index.json'])
         extension = dict(
             identifier=ext['id'],
             name=ext['name'],
@@ -68,14 +69,10 @@ def main(base_url):
         # when extensions get updated. We'll have to handle them by git.
         # git clone --branch {version} --depth 1 {github_url}
         run(['git', 'clone', '--branch', ext['version'], '--depth', '1', 'https://github.com/{github}.git'.format(**ext)])
-        dotgit_dir = os.path.join(
-            ext['github'].split('/')[-1],
-            '.git',
-        )
-        shutil.rmtree(dotgit_dir)
+        shutil.rmtree(os.path.join(public_dir, repo_name, '.git'))
 
         # Generate JSON file for each extension
-        with open(os.path.join(base_dir, 'node_modules', ext['npm'], 'index.json'), 'w') as wf:
+        with open(os.path.join(public_dir, repo_name, 'index.json'), 'w') as wf:
             json.dump(extension, wf)
 
         extensions.append(extension)
@@ -84,7 +81,7 @@ def main(base_url):
     os.chdir('..')
 
     # Generate the index JSON file
-    with open(os.path.join(base_dir, 'public', 'index.json'), 'w') as wf:
+    with open(os.path.join(public_dir, 'index.json'), 'w') as wf:
         json.dump(
             dict(
                 content_type='SN|Repo',
