@@ -45,9 +45,9 @@ def main(base_url):
             identifier=ext['id'],
             name=ext['name'],
             content_type=ext['content_type'],
-            area=ext['area'],
+            area=ext.get('area', None),
             version=ext['version'],
-            description=ext['description'],
+            description=ext.get('description', None),
             marketing_url=ext.get('marketing_url', None),
             thumbnail_url=ext.get('thumbnail_url', None),
             valid_until='2030-05-16T18:35:33.000Z',
@@ -55,6 +55,8 @@ def main(base_url):
             download_url='https://github.com/{github}/archive/{version}.zip'.format(**ext),
             latest_url=extension_info_url,
             flags=ext.get('flags', []),
+            dock_icon=exte.get('dock_icon', {}),
+            layerable=ext.get('layerable', None),
         )
 
         # Strip empty values
