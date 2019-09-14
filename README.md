@@ -37,7 +37,7 @@ It's easy and recommended to host with Netlify. However if you insist not to use
 - Prepare your environment with `Python 3.7` with `pip`, as well as `Git`;
 - Make sure Python 3.7 can be called directly via `python` from the shell;
 - Make sure Git is installed and can be called directly via `git` from the shell;
-- `pip install toml` to install the Python parser for TOML;
+- `pip install -r requirements.txt` to install required Python libraries;
 - Run the build script `./build.sh`;
 - Verify that:
   - the `public` directory is generated;
