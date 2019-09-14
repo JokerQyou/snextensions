@@ -17,3 +17,15 @@ Some of the official extensions are not included.
 
 If you'd like an extension to be included in this repository, feel free to open an issue.
 
+# Self-hosting
+
+If you'd like to host your own site instead of using ours:
+
+- Fork this repository;
+- Create a Netlify account if you don't have one already;
+- In Netlify app, Use "New site from Git" to create a site from your forked GitHub repository;
+- Wait for the build to finish;
+- After that you can use `YOUR_SITE_URL/index.json` as an `Extended Code`;
+
+Optionally you can set a human-readable site name (a subdomain of `netlify.com`) from the `Site settings` page.
+
