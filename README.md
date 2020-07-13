@@ -8,6 +8,23 @@ A set of open source extensions for StandardNotes.
 
 Paste `https://snext.netlify.app/index.json` into `Extended Code` in StandardNotes.
 
+# Notice
+
+Previously (last year) the URL was `https://snext.netlify.com/index.json`.
+But early this year Netlify decided to change the domain used by hosted apps.
+
+If you've been experiencing empty editor UI, there's a chance that you're using
+the old URL. Netlify is taking care of redirections but they are missing some
+headers. You should migrate to the new URL.
+
+These steps are required to migrate:
+
+- Look for the "Repository" options in the "Extensions" menu (on the bottom)
+- Delete the repository
+- Uninstall all installed themes and editors
+- Re-enter the new URL into `Extended Code`
+- Re-install all the themes and editors you use
+
 # Contribution
 
 If you'd like an extension to be included in this repository, feel free to open an issue.
