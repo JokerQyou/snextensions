@@ -1,1 +1,2 @@
-toml
+toml==0.10.1
+requests==2.24.0
