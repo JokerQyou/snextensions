@@ -1,6 +1,6 @@
 id = "org.standardnotes.bold-editor"
 npm = "sn-bold-editor"
-github = "sn-extensions/bold-editor"
+github = "standardnotes/bold-editor"
 main = "dist/index.html"
 name = "Bold Editor"
 content_type = "SN|Component"
