@@ -8,11 +8,6 @@ A set of open source extensions for StandardNotes.
 
 Paste `https://snext.netlify.app/index.json` into `Extended Code` in StandardNotes.
 
-# Notice
-
-Currently we only host extensions developed by StandardNotes.
-Some of the official extensions are not included.
-
 # Contribution
 
 If you'd like an extension to be included in this repository, feel free to open an issue.
