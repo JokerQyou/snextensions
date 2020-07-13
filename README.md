@@ -6,7 +6,7 @@ A set of open source extensions for StandardNotes.
 
 # Usage
 
-Paste `https://snext.netlify.com/index.json` into `Extended Code` in StandardNotes.
+Paste `https://snext.netlify.app/index.json` into `Extended Code` in StandardNotes.
 
 # Notice
 
@@ -28,7 +28,7 @@ In case if you'd like to host your own site other than using ours, you can do so
 - In Netlify app, Use "New site from Git" to create a site from your forked GitHub repository;
 - Wait for the build to finish;
 - After that you can use `YOUR_SITE_URL/index.json` as an `Extended Code`;
-- Optionally you can set a human-readable site name (a subdomain of `netlify.com`) from the `Site settings` page.
+- Optionally you can set a human-readable site name (a subdomain of `netlify.app`) from the `Site settings` page.
 
 ## Without Netlify
 
