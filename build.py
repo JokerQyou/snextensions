@@ -10,6 +10,7 @@ public/
   |
   |-index.json  <- repo info, contain all extensions' info
 '''
+import glob
 import json
 import os
 import shutil
@@ -22,9 +23,14 @@ def main(base_url):
     while base_url.endswith('/'):
         base_url = base_url[:-1]
 
+    print('Fetching extensions...')
     base_dir = os.path.dirname(os.path.abspath(__file__))
     extension_dir = os.path.join(base_dir, 'extensions')
     public_dir = os.path.join(base_dir, 'public')
+
+    if os.path.exists(public_dir):
+        shutil.rmtree(public_dir)
+
     os.makedirs(public_dir)
     os.chdir(public_dir)
 
@@ -68,7 +74,13 @@ def main(base_url):
         # That is very strange, StandardNotes does not upload some npm packages
         # when extensions get updated. We'll have to handle them by git.
         # git clone --branch {version} --depth 1 {github_url}
-        run(['git', 'clone', '--branch', ext['version'], '--depth', '1', 'https://github.com/{github}.git'.format(**ext)])
+        run([
+            'git', '-c', 'advice.detachedHead=false',
+            'clone',
+            '--branch', ext['version'],
+            '--depth', '1',
+            'https://github.com/{github}.git'.format(**ext),
+        ])
         shutil.rmtree(os.path.join(public_dir, repo_name, '.git'))
 
         # Generate JSON file for each extension
@@ -90,6 +102,24 @@ def main(base_url):
             ),
             wf,
         )
+
+    # Cleanup unnecessary files
+    print('Cleaning up...')
+    for filename in ['README.md', 'Gruntfile.js', '.babelrc', 'package.json', '*.map', 'src', 'vendor']:
+        for matched_fpath in glob.glob(f'public/*/{filename}'):
+            if os.path.isdir(matched_fpath):
+                shutil.rmtree(matched_fpath)
+            elif os.path.isfile(matched_fpath):
+                os.remove(matched_fpath)
+            else:
+                continue
+
+            print(f'> Removed {matched_fpath}')
+
+    # Distribute header rules for Netlify
+    shutil.copyfile('_headers', os.path.join(public_dir, '_headers'))
+
+    print('Build finished')
 
 
 if __name__ == '__main__':

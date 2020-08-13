@@ -1,3 +1,3 @@
 [build]
-command = "./build.sh"
+command = "python build.py"
 publish = "public"

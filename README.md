@@ -50,7 +50,7 @@ It's easy and recommended to host with Netlify. However if you insist not to use
 - Make sure Python 3.7 can be called directly via `python` from the shell;
 - Make sure Git is installed and can be called directly via `git` from the shell;
 - `pip install -r requirements.txt` to install required Python libraries;
-- Run the build script `./build.sh`;
+- Run the build script `python build.py`;
 - Verify that:
   - the `public` directory is generated;
   - there should be `public/index.json` containing information of all extensions;
