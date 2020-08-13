@@ -44,7 +44,7 @@ In case if you'd like to host your own site other than using ours, you can do so
 
 ## Without Netlify
 
-It's easy and recommended to host with Netlify. However if you insist not to use it, it is also possible:
+It's easy and recommended to host with Netlify. However if you insist not to use it, it is also possible (notice: the following steps work on Linux or WSL):
 
 - Prepare your environment with `Python 3.7` with `pip`, as well as `Git`;
 - Make sure Python 3.7 can be called directly via `python` from the shell;
@@ -56,3 +56,9 @@ It's easy and recommended to host with Netlify. However if you insist not to use
   - there should be `public/index.json` containing information of all extensions;
   - all extensions should exists in `public` as sub-directories;
 - Host the `public` directory like you would do with any static resources, using nginx, caddy, etc.
+- You need to enable CORS headers on your reverse proxy (nguni / caddy / traefik). With nginx these rules will be enough:
+  ```nginx
+  add_header 'Access-Control-Allow-Origin' '*';
+  add_header 'Access-Control-Allow-Headers' 'content-type';
+  ```
+
