@@ -56,7 +56,7 @@ It's easy and recommended to host with Netlify. However if you insist not to use
   - there should be `public/index.json` containing information of all extensions;
   - all extensions should exists in `public` as sub-directories;
 - Host the `public` directory like you would do with any static resources, using nginx, caddy, etc.
-- You need to enable CORS headers on your reverse proxy (nguni / caddy / traefik). With nginx these rules will be enough:
+- You need to enable CORS headers on your reverse proxy (nginx / caddy / traefik). With nginx these rules will be enough:
   ```nginx
   add_header 'Access-Control-Allow-Origin' '*';
   add_header 'Access-Control-Allow-Headers' 'content-type';
