@@ -41,6 +41,7 @@ In case if you'd like to host your own site other than using ours, you can do so
 - Wait for the build to finish;
 - After that you can use `YOUR_SITE_URL/index.json` as an `Extended Code`;
 - Optionally you can set a human-readable site name (a subdomain of `netlify.app`) from the `Site settings` page.
+  **Notice: You need to manually trigger a new deploy via Netlify web UI after changing the site name.**
 
 ## Without Netlify
 
@@ -50,7 +51,7 @@ It's easy and recommended to host with Netlify. However if you insist not to use
 - Make sure Python 3.7 can be called directly via `python` from the shell;
 - Make sure Git is installed and can be called directly via `git` from the shell;
 - `pip install -r requirements.txt` to install required Python libraries;
-- Run the build script `python build.py`;
+- Run the build script `URL=my_url python build.py` where `my_url` is the full URL you would later host the resource files on. E.g. if you want to access the plugins via `https://example.com/index.json` then replace `my_url` with `https://example.com/`.
 - Verify that:
   - the `public` directory is generated;
   - there should be `public/index.json` containing information of all extensions;
