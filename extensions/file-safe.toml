@@ -1,0 +1,13 @@
+id = "org.standardnotes.file-safe"
+npm = "sn-filesafe"
+github = "standardnotes/filesafe-bar"
+main = "dist/index.html"
+
+name = "FileSafe"
+content_type = "SN|Component"
+area = "editor-stack"
+version = "2.0.10"
+marketing_url = "https://standardnotes.org/extensions/filesafe"
+thumbnail_url = "https://s3.amazonaws.com/standard-notes/screenshots/models/FileSafe-banner.png"
+description = "Encrypted attachments for your notes using your Dropbox, Google Drive, or WebDAV server. Limited to 50MB per file."
+flags = []
