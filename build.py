@@ -66,7 +66,12 @@ def main(base_url):
             flags=ext.get('flags', []),
             dock_icon=ext.get('dock_icon', {}),
             layerable=ext.get('layerable', None),
+            deletion_warning=ext.get('deletion_warning', None),
         )
+
+        # mfa-link (2FA manager) has no expiration
+        if ext.get('no_expire', False):
+            extension.pop('valid_until', None)
 
         # Strip empty values
         extension = {k: v for k, v in extension.items() if v}
