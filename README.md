@@ -10,6 +10,12 @@ Paste `https://snext.netlify.app/index.json` into `Extended Code` in StandardNot
 
 # Notice
 
+**2023-03-01 Update**
+
+I've not used StandardNotes for a long time, so it's impractical for me to keep an eye for all the extension updates.
+For this reason I'm archiving this repository. You can still use the code as is, or fork and modify to suit your own needs.
+Happy hacking!
+
 Previously (last year) the URL was `https://snext.netlify.com/index.json`.
 But early this year Netlify decided to change the domain used by hosted apps.
 
